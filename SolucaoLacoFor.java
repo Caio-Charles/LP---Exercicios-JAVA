@@ -4,21 +4,24 @@ public class SolucaoLacoFor {
 	public static void main(String[] args) {
 		// ENTRADA E VARIÁVEIS:
 		Scanner entrada = new Scanner(System.in);
-		int valor, erro = 0; // Valor: armazena a entrada do usuario ; erro: armazena a qtd de valores fora do intervalo fechado.
+		int valor, i;
 
-		// PROCESSAMENTO COM SAÍDA:
-		for (int i = 0; i <= erro; i++) { // Garante que ao menos uma 1x a entrada será solicitada.
+		// PROCESSAMENTO COM VALIDAÇÃO DA ENTRADA:
+		verificador: for (i = 0; true; i++) {
 			valor = entrada.nextInt();
-
-			if (valor < 1 || valor > 1000) { // Garante que a entrada seja solicitada enquanto fora de intervalo.
-				erro++;
-				continue; // Não permite que o laço subsequente seja executado, passando para próx. iteração de 'i'.
-			}
-
-			for (int j = 1; j <= valor; j += 2) {
-				System.out.println(j);
+			if (valor < 1 || valor > 1000) {
+				continue verificador;
+			} else {
+				i = 1; // PONTO CRUCIAL PRA FUNCIONAR!
+				break verificador;
 			}
 		}
 		entrada.close();
+
+		// PROCESSAMENTO COM SAÍDA
+		while (i <= valor) {
+			System.out.println(i);
+			i += 2;
+		}
 	}
 }
